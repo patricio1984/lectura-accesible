@@ -112,7 +112,9 @@ export const FileUploader = ({ onTextExtracted }: Props) => {
         {charCount > 0 && (
           <p
             className={
-              charCount > MAX_CHARS ? "text-red-600 font-semibold" : ""
+              charCount > MAX_CHARS
+                ? "dark:text-red-400 text-red-700 font-semibold"
+                : ""
             }
           >
             {charCount} / {MAX_CHARS}
@@ -122,7 +124,7 @@ export const FileUploader = ({ onTextExtracted }: Props) => {
 
       {error && (
         <p
-          className="text-red-600 text-sm flex items-center gap-1 mt-1"
+          className="dark:text-red-400 text-red-700 text-sm flex items-center gap-1 mt-1"
           role="alert"
         >
           <FileWarning className="w-4 h-4" />

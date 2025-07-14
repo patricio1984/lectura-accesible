@@ -19,7 +19,7 @@ export const SpeedSelector = ({ value, onChange }: Props) => {
         type="range"
         min="0.7"
         max="1.2"
-        step="0.10"
+        step="0.1"
         value={value}
         onChange={(e) => onChange(parseFloat(e.target.value))}
         className="w-full"
@@ -28,10 +28,10 @@ export const SpeedSelector = ({ value, onChange }: Props) => {
         aria-valuenow={value}
         aria-label="Velocidad de lectura"
       />
-      <p className="text-sm text-gray-600 dark:text-gray-400">
+      <p className="text-sm text-gray-700 dark:text-gray-200">
         {value.toFixed(2)}x
       </p>
-      <p className="text-xs text-gray-500 dark:text-gray-500">
+      <p className="text-xs text-gray-700 dark:text-gray-200">
         Rango: 0.7x (más lento) - 1.2x (más rápido)
       </p>
     </div>

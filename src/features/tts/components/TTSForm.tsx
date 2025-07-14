@@ -82,7 +82,10 @@ export function TTSForm() {
       </div>
 
       {validationError && (
-        <p className="text-red-600 text-base font-medium" role="alert">
+        <p
+          className="dark:text-red-400 text-red-700 text-base font-medium"
+          role="alert"
+        >
           {validationError}
         </p>
       )}

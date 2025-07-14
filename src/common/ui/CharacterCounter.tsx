@@ -10,10 +10,10 @@ export const CharacterCounter = ({ current, max }: Props) => {
   const isMax = current === max;
 
   const colorClass = isMax
-    ? "text-red-600"
+    ? "dark:text-red-400 text-red-700"
     : isWarning
       ? "text-orange-500"
-      : "text-gray-500";
+      : "text-gray-800 dark:text-gray-200";
 
   const icon = isMax ? "🟥" : isWarning ? "🟧" : "";
 

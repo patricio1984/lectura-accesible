@@ -24,7 +24,7 @@ export const VoicePreview = ({
         <button
           type="button"
           onClick={onPreview}
-          className="cursor-pointer font-medium flex-shrink-0 flex items-center gap-2 text-lg text-blue-600 hover:underline disabled:opacity-50"
+          className="cursor-pointer font-medium flex-shrink-0 flex items-center gap-2 text-lg dark:text-blue-400 text-blue-700 hover:underline disabled:opacity-50"
           disabled={isLoading}
         >
           {isLoading ? (
@@ -48,7 +48,7 @@ export const VoicePreview = ({
       </div>
 
       {error && (
-        <p className="text-red-600 text-sm mt-1" role="alert">
+        <p className="dark:text-red-400 text-red-700 text-sm mt-1" role="alert">
           {error}
         </p>
       )}

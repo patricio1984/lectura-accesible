@@ -67,7 +67,7 @@ export const AudioHistoryList = () => {
                 onClick={() =>
                   handlePlay(item.id, item.text, item.voiceId, item.speed)
                 }
-                className="cursor-pointer flex items-center gap-2 text-lg font-medium text-blue-600 hover:underline disabled:opacity-50"
+                className="cursor-pointer flex items-center gap-2 text-lg font-medium dark:text-blue-400 text-blue-700 hover:underline disabled:opacity-50"
                 disabled={loadingId === item.id}
               >
                 {loadingId === item.id ? (
@@ -79,14 +79,17 @@ export const AudioHistoryList = () => {
               </button>
               <button
                 onClick={() => removeEntry(item.id)}
-                className="cursor-pointer flex items-center gap-2 text-lg font-medium text-red-500 hover:underline"
+                className="cursor-pointer flex items-center gap-2 text-lg font-medium dark:text-red-400 text-red-700 hover:underline"
               >
                 <Trash2 className="w-4 h-4" />
                 Eliminar
               </button>
             </div>
             {error && playingId === item.id && (
-              <p className="text-red-600 text-sm mt-1" role="alert">
+              <p
+                className="dark:text-red-400 text-red-700 text-sm mt-1"
+                role="alert"
+              >
                 {error}
               </p>
             )}

@@ -17,7 +17,7 @@ export const AudioHistorySection = () => {
           <span className="text-2xl font-semibold">Historial de lecturas</span>
           <button
             onClick={clearAll}
-            className="text-lg text-red-600 hover:underline"
+            className="cursor-pointer text-lg dark:text-red-400 text-red-700 hover:underline"
           >
             Borrar todo
           </button>
