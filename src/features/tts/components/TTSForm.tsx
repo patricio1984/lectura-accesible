@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import { useTTS } from "../hooks/useTTS";
 import { useVoicePreview } from "../hooks/useVoicePreview";
-import { useAudioHistory } from "../hooks/useAudioHistory";
 import { TextArea } from "@/common/ui/TextArea";
 import { Button } from "@/common/ui/Button";
 import { AudioPlayer } from "@/common/ui/AudioPlayer";
@@ -13,11 +12,13 @@ import { VoiceSelect } from "./VoiceSelect";
 import { VoicePreview } from "./VoicePreview";
 import { useSafeAddToHistory } from "../hooks/useSafeAddToHistory";
 import { FileUploader } from "@/common/ui/FileUpload";
+import { SpeedSelector } from "./SpeedSelector";
 
 export function TTSForm() {
   const [text, setText] = useState("");
   const [voiceId, setVoiceId] = useState("HbJt0yomFFBFMBQ7I69w");
   const [validationError, setValidationError] = useState<string | null>(null);
+  const [speed, setSpeed] = useState(1.0);
 
   const safeAddToHistory = useSafeAddToHistory();
   const { generate, audioUrl, isLoading } = useTTS();
@@ -37,9 +38,9 @@ export function TTSForm() {
 
     setValidationError(null);
 
-    const url = await generate(text, voiceId);
+    const url = await generate(text, voiceId, speed);
     if (url) {
-      const added = safeAddToHistory(text, voiceId);
+      const added = safeAddToHistory(text, voiceId, speed);
       if (!added) return;
     }
   };
@@ -66,6 +67,8 @@ export function TTSForm() {
           <CharacterCounter current={text.length} max={1000} />
         </div>
       </div>
+
+      <SpeedSelector value={speed} onChange={setSpeed} />
 
       <div className="space-y-4">
         <VoiceSelect selected={voiceId} onChange={setVoiceId} />

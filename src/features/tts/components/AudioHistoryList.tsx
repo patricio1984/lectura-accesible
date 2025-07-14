@@ -1,4 +1,3 @@
-// components/AudioHistoryList.tsx
 "use client";
 
 import React, { useState } from "react";
@@ -15,14 +14,19 @@ export const AudioHistoryList = () => {
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const handlePlay = async (entryId: string, text: string, voiceId: string) => {
+  const handlePlay = async (
+    entryId: string,
+    text: string,
+    voiceId: string,
+    speed: number
+  ) => {
     setLoadingId(entryId);
     setError(null);
     setAudioUrl(null);
     try {
       const response = await axios.post(
         "/api/tts",
-        { text, voiceId },
+        { text, voiceId, speed },
         { responseType: "blob" }
       );
       const url = URL.createObjectURL(response.data);
@@ -53,9 +57,16 @@ export const AudioHistoryList = () => {
                 ? item.text.slice(0, 120) + "…"
                 : item.text}
             </p>
+            <div className="flex flex-wrap items-center gap-4 mb-2">
+              <span className="text-sm text-gray-500 dark:text-gray-400">
+                Velocidad: {item.speed.toFixed(2)}x
+              </span>
+            </div>
             <div className="flex flex-wrap items-center gap-12">
               <button
-                onClick={() => handlePlay(item.id, item.text, item.voiceId)}
+                onClick={() =>
+                  handlePlay(item.id, item.text, item.voiceId, item.speed)
+                }
                 className="cursor-pointer flex items-center gap-2 text-lg font-medium text-blue-600 hover:underline disabled:opacity-50"
                 disabled={loadingId === item.id}
               >

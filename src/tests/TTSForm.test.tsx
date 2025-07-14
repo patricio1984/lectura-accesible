@@ -34,7 +34,9 @@ describe("TTSForm", () => {
     fireEvent.click(button);
 
     await waitFor(() => {
-      expect(screen.getByRole("alert")).toHaveTextContent(/texto.*vacío|al menos.*carácter/i);
+      expect(screen.getByRole("alert")).toHaveTextContent(
+        /texto.*vacío|al menos.*carácter/i
+      );
     });
   });
 

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { text, voiceId } = await request.json();
+  const { text, voiceId, speed } = await request.json();
 
   const selectedVoiceId =
     typeof voiceId === "string" ? voiceId : "2Lb1en5ujrODDIqmp7F3";
@@ -20,6 +20,20 @@ export async function POST(request: Request) {
   }
 
   try {
+    const finalSpeed = typeof speed === "number" ? speed : 1.0;
+
+    const requestBody = {
+      text,
+      model_id: "eleven_multilingual_v2",
+      voice_settings: {
+        stability: 0.75,
+        similarity_boost: 0.75,
+        style: 0.0,
+        use_speaker_boost: true,
+        speed: finalSpeed,
+      },
+    };
+
     const response = await fetch(
       `https://api.elevenlabs.io/v1/text-to-speech/${selectedVoiceId}`,
       {
@@ -29,14 +43,7 @@ export async function POST(request: Request) {
           "Content-Type": "application/json",
           Accept: "audio/mpeg",
         },
-        body: JSON.stringify({
-          text,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: {
-            stability: 0.5,
-            similarity_boost: 0.75,
-          },
-        }),
+        body: JSON.stringify(requestBody),
       }
     );
 

@@ -13,7 +13,6 @@ type Props = {
 };
 
 export const VoicePreview = ({
-  voiceId,
   isLoading,
   error,
   audioUrl,

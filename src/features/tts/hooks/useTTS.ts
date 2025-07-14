@@ -1,4 +1,3 @@
-// src/features/tts/hooks/useTTS.ts
 import { useState } from "react";
 import axios from "axios";
 
@@ -9,17 +8,20 @@ export function useTTS() {
 
   async function generate(
     text: string,
-    voiceId: string
+    voiceId: string,
+    speed: number = 1.0
   ): Promise<string | null> {
     setIsLoading(true);
     setError(null);
     setAudioUrl(null);
+
     try {
-      const response = await axios.post(
-        "/api/tts",
-        { text, voiceId },
-        { responseType: "blob" }
-      );
+      const requestData = { text, voiceId, speed };
+
+      const response = await axios.post("/api/tts", requestData, {
+        responseType: "blob",
+      });
+
       const url = URL.createObjectURL(response.data);
       setAudioUrl(url);
       return url;

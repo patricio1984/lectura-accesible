@@ -15,6 +15,8 @@
 - Tests automatizados con Vitest + React Testing Library.
 - UI limpia y responsiva con TailwindCSS.
 - Notificaciones con `sonner`.
+- Permite ajustar la **velocidad de lectura** del audio generado.
+- La velocidad seleccionada se conserva también en el **historial de audios**.
 
 ---
 
@@ -68,7 +70,7 @@ pnpm test
 ```txt
 src/
 │
-├── app/                    # Layouts y rutas Next.js App Router
+├── app/                   # Layouts y rutas Next.js App Router
 │   └── page.tsx           # Página principal
 │
 ├── common/                # Componentes reutilizables y UI compartida
@@ -104,6 +106,3 @@ Este proyecto busca demostrar cómo se puede construir una aplicación accesible
 Este proyecto está licenciado bajo los términos de la [Licencia MIT](https://opensource.org/licenses/MIT).
 
 ---
-
-
-

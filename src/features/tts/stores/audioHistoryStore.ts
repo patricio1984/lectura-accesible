@@ -6,6 +6,7 @@ export type AudioEntry = {
   id: string;
   text: string;
   voiceId: string;
+  speed: number;
 };
 
 type AudioHistoryStore = {
@@ -22,7 +23,10 @@ export const useAudioHistoryStore = create<AudioHistoryStore>()(
 
       addEntry: (entry: Omit<AudioEntry, "id">) => {
         const exists = get().history.some(
-          (e) => e.text === entry.text && e.voiceId === entry.voiceId
+          (e) =>
+            e.text === entry.text &&
+            e.voiceId === entry.voiceId &&
+            e.speed === entry.speed
         );
         if (exists) return false;
 

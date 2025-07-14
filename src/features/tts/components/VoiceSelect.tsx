@@ -1,6 +1,5 @@
 import React from "react";
 import { voices } from "@/features/tts/constants/voices";
-import { useVoicePreview } from "../hooks/useVoicePreview";
 
 type Props = {
   selected: string;
@@ -8,9 +7,6 @@ type Props = {
 };
 
 export const VoiceSelect = ({ selected, onChange }: Props) => {
-  const { generatePreview, previewUrl, isPreviewLoading, previewError } =
-    useVoicePreview();
-
   return (
     <div className="space-y-1">
       <label htmlFor="voice" className="block text-lg font-medium">

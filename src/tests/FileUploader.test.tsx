@@ -14,7 +14,9 @@ describe("FileUploader", () => {
 
     render(<FileUploader onTextExtracted={onTextExtracted} />);
 
-    const input = screen.getByLabelText(/Subir archivo/i, { selector: "input" });
+    const input = screen.getByLabelText(/Subir archivo/i, {
+      selector: "input",
+    });
     fireEvent.change(input, { target: { files: [file] } });
 
     await waitFor(() => {
