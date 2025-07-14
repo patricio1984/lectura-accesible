@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Lectura Accesible",
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.webp",
         width: 1200,
         height: 630,
         alt: "Imagen representativa de Lectura Accesible",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "Lectura Accesible",
     description:
       "Convierte texto en voz de forma accesible, clara y con controles personalizables.",
-    images: ["/og-image.png"],
+    images: ["/og-image.webp"],
   },
 };
 
